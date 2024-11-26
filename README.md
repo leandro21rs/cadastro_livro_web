@@ -1,6 +1,6 @@
 # Livro_web
 
-Usei esse template para realizar as telas para o TJ-Livros, e algumas funcionalidades do template nao estão sendo utilizadas para essa aplicação.
+Usei esse template para realizar as telas para o TJ-Livros, e algumas recursos do template nao estão sendo utilizadas para essa aplicação, pois o intuito era apenas uma prova de conhecimento.
 
 Para executar o projeto:
 Execute:
