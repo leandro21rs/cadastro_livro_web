@@ -1,0 +1,52 @@
+<form [formGroup]="autorForm" (ngSubmit)="salvarAutor()">
+    <div class="row d-flex p-5 align-items-center">      
+      <div class="col-lg-6 col-sm-12 pe-5">
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" formControlName="nome" />
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <p-button
+          type="submit"
+          label="Salvar Autor"
+          [loading]="loading"
+          icon="pi pi-save"
+        ></p-button>
+      </div>
+      <div class="mt-5">
+        <p-table [value]="autores" [tableStyle]="{ 'min-width': '30rem' }">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome</th>
+              <th>Ações</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-autor>
+            <tr>
+              <td>{{ autor.nome }}</td>
+              <td>
+                <p-button
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-warning"
+                  (click)="editarAutor(autor)"
+                  label="Editar"
+                ></p-button>
+                <p-button
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger"
+                  (click)="deletarAutor(autor.codAu)"
+                  label="Excluir"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </form>
+  
+  <div class="container-message">
+    <p-messages></p-messages>
+  </div>
+  

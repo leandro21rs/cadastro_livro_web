@@ -1,0 +1,23 @@
+<section id="main" class="container" role="main">
+    <div class="row">
+        <div class="offset-lg-3 col-lg-6 mb-2 mb-lg-4 text-center">
+            <span class="p-input-icon-left w-100">
+                <i class="fa-light fa-magnifying-glass"></i>
+                <input pInputText (keyup)="listarComponents($event.target.value)" class="form-control form-control-lg p-inputtext p-component" placeholder="Buscar serviço" autofocus />
+            </span>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-lg-3" *ngFor="let component of components">
+            <a>
+                <div class="card bd-callout bd-callout-primary text-body bg-white my-2 my-lg-4">
+                    <h5 class="text-primary mb-2">{{ component.label }}</h5>
+                    <p class="mb-1 lh-140 text-muted">{{ component.descricaoApp }}</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-12" *ngIf="isFound">
+            <h5 class="text-center mt-4">Não encontramos nenhum serviço.</h5>
+        </div>
+    </div>
+</section>

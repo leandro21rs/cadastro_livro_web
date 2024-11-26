@@ -1,0 +1,221 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "frontend": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "allowedCommonJsDependencies": [
+                            "rxjs-compat",
+                            "jspdf-autotable",
+                            "export-to-csv",
+                            "chart.js",
+                            "raf",
+                            "pdfmake/build/pdfmake",
+                            "core-js/modules/web.dom-collections.iterator.js",
+                            "core-js/modules/es.string.trim.js",
+                            "core-js/modules/es.string.starts-with.js",
+                            "core-js/modules/es.string.split.js",
+                            "core-js/modules/es.string.replace.js",
+                            "core-js/modules/es.string.match.js",
+                            "core-js/modules/es.string.includes.js",
+                            "core-js/modules/es.string.ends-with.js",
+                            "core-js/modules/es.regexp.to-string.js",
+                            "core-js/modules/es.promise.js",
+                            "core-js/modules/es.array.reverse.js",
+                            "core-js/modules/es.array.reduce.js",
+                            "core-js/modules/es.array.iterator.js",
+                            "core-js/modules/es.array.index-of.js"
+                        ],
+                        "outputPath": "dist/frontend",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets/images/favicon.ico",
+                            "src/assets",
+                            "src/config.json"
+                        ],
+                        "styles": [
+                            "node_modules/ngx-toastr/toastr.css",
+                            "src/assets/css/theme.css",
+                            "node_modules/primeng/resources/primeng.min.css",
+                            "node_modules/primeicons/primeicons.css",
+                            "src/assets/css/primeNgFazenda.css",
+                            "src/assets/css/style.css"
+                        ],
+                        "scripts": [
+                            "src/assets/js/jquery-3.3.1.min.js",
+                            "src/assets/js/tabber.js",
+                            "src/assets/js/popper.min.js",
+                            "src/assets/js/jquery.menu-aim.js",
+                            "src/assets/js/main.js",
+                            "src/assets/js/custom.js",
+                            "./node_modules/chart.js/dist/chart.min.js"
+                        ],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "beta": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.beta.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
+                            },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "dev": {
+                            "fileReplacements": [{
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.dev.ts"
+                            }],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
+                            },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    },
+                    "defaultConfiguration": ""
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "frontend:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "frontend:build:production"
+                        },
+                        "beta": {
+                            "browserTarget": "frontend:build:beta"
+                        },
+                        "dev": {
+                            "browserTarget": "frontend:build:dev"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "frontend:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "frontend:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "frontend:serve:production"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "frontend",
+    "cli": {
+        "analytics": "a632681b-a07d-48fc-ac61-f7e5337b6291"
+    }
+}

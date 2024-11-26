@@ -1,0 +1,63 @@
+<!-- Sem estilo no componente -->
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="dropdown-single">Single</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/dropdown" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Basic</label>
+                    <p-knob [(ngModel)]="value1"></p-knob>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Readonly</label>
+                    <p-knob [(ngModel)]="value2" [readonly]="true"></p-knob>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Disabled</label>
+                    <p-knob [(ngModel)]="value3" [disabled]="true"></p-knob>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Min/Max</label>
+                    <p-knob [(ngModel)]="value4" [min]="-50" [max]="50"></p-knob>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Step</label>
+                    <p-knob [(ngModel)]="value5" [step]="10"></p-knob>
+
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Template</label>
+                    <p-knob [(ngModel)]="value6" valueTemplate="{value}%"></p-knob>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Stroke</label>
+                    <p-knob [(ngModel)]="value7" [strokeWidth]="5"></p-knob>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Size</label>
+                    <p-knob [(ngModel)]="value8" [size]="200"></p-knob>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Color</label>
+                    <p-knob [(ngModel)]="value9" valueColor="SlateGray" rangeColor="MediumTurquoise"></p-knob>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

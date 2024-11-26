@@ -1,0 +1,85 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="listbox-single">Single</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/listbox" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-listbox [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-listbox>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="listbox-advanced">Advanced with Templating, Filtering and Multiple Selection</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/listbox" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-listbox [options]="countries" [(ngModel)]="selectedCountries" [metaKeySelection]="false"
+                        [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="name"
+                        [listStyle]="{'max-height':'250px'}">
+                        <ng-template let-country pTemplate="item">
+                            <div class="country-item">
+                                <div>{{country.name}}</div>
+                            </div>
+                        </ng-template>
+                    </p-listbox>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="listbox-advanced">Advanced with Group, Filtering and Multiple Selection</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/listbox" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-listbox [options]="groupedCities" [group]="true" [(ngModel)]="selectedCountries" [metaKeySelection]="false"
+                    [checkbox]="true" [filter]="true" [multiple]="true" [listStyle]="{'max-height':'250px'}">
+                    <ng-template let-group pTemplate="group">
+                      <div class="p-d-flex p-ai-center">
+                        <span>{{group.label}}</span>
+                      </div>
+                    </ng-template>
+                  </p-listbox>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

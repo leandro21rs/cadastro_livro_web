@@ -1,0 +1,18 @@
+.items {
+    padding: 0;
+}
+
+body {
+    line-height: inherit;
+    overflow-y: hidden;
+    /* Hide scrollbars */
+}
+
+.p-panelmenu .p-panelmenu-content {
+    padding: 0 !important;
+}
+
+table {
+    margin-bottom: 0;
+    vertical-align: middle;
+}

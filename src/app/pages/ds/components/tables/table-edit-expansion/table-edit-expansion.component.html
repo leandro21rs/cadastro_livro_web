@@ -1,0 +1,217 @@
+<section id="main" class="container" role="main">
+    <p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+    <p-table id="table-expanded" class="table-scroll card bg-white pb-3 bg-light pt-1" [value]="products" dataKey="id"
+        responsiveLayout="scroll" editMode="row">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem"></th>
+                <th pSortableColumn="name">Nome
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th>Imagem</th>
+                <th pSortableColumn="price">Preço
+                    <p-sortIcon field="price"></p-sortIcon>
+                </th>
+                <th pSortableColumn="category">Categoria
+                    <p-sortIcon field="category"></p-sortIcon>
+                </th>
+                <th pSortableColumn="rating">Avaliação
+                    <p-sortIcon field="rating"></p-sortIcon>
+                </th>
+                <th pSortableColumn="inventoryStatus">Status
+                    <p-sortIcon field="inventoryStatus">
+                    </p-sortIcon>
+                </th>
+                <th style="width:8rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-expanded="expanded" let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="product">
+                <td>
+                    <button type="button" pButton [pRowToggler]="product"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'fa-light fa-chevron-up' : 'fa-light fa-chevron-down'"></button>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="product.name" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            <a class="d-block fw-semibold"
+                                [routerLink]="['/ds/template/table-expansion-edit', product.id]">{{product.name}}</a>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td><img class="rounded border" [src]="'assets/showcase/images/demo/product/' + product.image"
+                        [alt]="product.name" height="50px" width="auto" /></td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <!-- <input pInputText type="text" [(ngModel)]="product.price" /> -->
+                            <p-inputNumber id="price" [(ngModel)]="product.price" mode="currency" currency="BRL"
+                        locale="pt-BR"></p-inputNumber>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ product.price | currency: 'BRL' }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="categories" [(ngModel)]="product.category"
+                                [style]="{ width: '100%' }"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ product.category }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false">
+                    </p-rating>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="statuses2" [(ngModel)]="product.inventoryStatus"
+                                [style]="{ width: '100%' }"></p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            <span [ngClass]="[
+                            product.inventoryStatus === 'LOWSTOCK' ? 'badge badge-danger text-bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25' : '' ||
+                            product.inventoryStatus === 'OUTOFSTOCK' ? 'badge badge-warning text-bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25' : '' ||
+                            product.inventoryStatus === 'INSTOCK' ? 'badge badge-success text-bg-success bg-opacity-10 text-success border border-success border-opacity-25' : ''
+                        ]">
+                                {{product.inventoryStatus}}
+                            </span>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td class="text-end">
+                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="fa-light fa-pen"
+                        (click)="onRowEditInit(product)" class="btn btn-outline-secondary me-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check"
+                        (click)="onRowEditSave(product)"
+                        class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times"
+                        (click)="onRowEditCancel(product, ri)"
+                        class="p-button-rounded p-button-text p-button-danger"></button>
+                    <button *ngIf="!editing" pButton icon="fa-light fa-trash-can" class="btn btn-outline-secondary"
+                        (click)="deleteProduct(product)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-product>
+            <tr>
+                <td colspan="7">
+                    <div class="p-3">
+                        <p-table [value]="product.orders" dataKey="id">
+                            <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">Código
+                    <p-sortIcon field="price"></p-sortIcon>
+                </th>
+                <th pSortableColumn="customer">Cliente
+                    <p-sortIcon field="customer"></p-sortIcon>
+                </th>
+                <th pSortableColumn="date">Data
+                    <p-sortIcon field="date"></p-sortIcon>
+                </th>
+                <th pSortableColumn="amount">Valor
+                    <p-sortIcon field="amount"></p-sortIcon>
+                </th>
+                <th pSortableColumn="status">Status
+                    <p-sortIcon field="status"></p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order.customer}}</td>
+                <td>{{order.date}}</td>
+                <td>{{order.amount | currency:'BRL'}}</td>
+                <td>
+                    <span [ngClass]="[
+                        order.status === 'CANCELLED' ? 'badge badge-danger text-bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25' : '' ||
+                        order.status === 'PENDING' ? 'badge badge-warning text-bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25' : '' ||
+                        order.status === 'DELIVERED' ? 'badge badge-success text-bg-success bg-opacity-10 text-success border border-success border-opacity-25' : '' ||
+                        order.status === 'RETURNED' ? 'badge badge-primary text-bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25' : ''
+                    ]">
+                        {{order.status}}
+                    </span>
+                </td>
+                <td>
+                    <button pButton icon="fa-light fa-pen" class="btn btn-outline-secondary me-2"
+                        (click)="editProduct(order, product.id)"></button>
+                    <button pButton icon="fa-light fa-trash-can" class="btn btn-outline-secondary"
+                        (click)="deleteProductOrder(order, product.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">Ainda não há pedidos para este produto.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+    </p-table>
+    <p-dialog styleClass="p-fluid w-50" [(visible)]="productDialog" header="Detalhes" [modal]="true" [draggable]="false"
+        [resizable]="false">
+        <ng-template pTemplate="content">
+            <div class="text-center mb-3">
+                <!-- <img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.image" class="product-image" *ngIf="product.image"> -->
+            </div>
+            <div class="mb-3">
+                <label for="name">Cliente</label>
+                <input type="text" pInputText id="name" [(ngModel)]="product.customer" required autofocus />
+                <small class="p-error" *ngIf="submitted && !product.customer">Nome é obrigatório.</small>
+            </div>
+            <div class="mb-3">
+                <label for="name">Data</label>
+                <input type="text" pInputText id="name" [(ngModel)]="product.date" required autofocus
+                    mask="00/00/0000" />
+                <small class="p-error" *ngIf="submitted && !product.date">Data é obrigatória.</small>
+            </div>
+            <div class="mb-3">
+                <label for="inventoryStatus">Status</label>
+                <p-dropdown [(ngModel)]="product.status" inputId="status" [options]="statuses" placeholder="Selecione">
+                    <ng-template let-option pTemplate="item">
+                        <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+            <div class="row">
+                <div class="field col">
+                    <label for="price">Valor</label>
+                    <p-inputNumber id="price" [(ngModel)]="product.amount" mode="currency" currency="BRL"
+                        locale="pt-BR"></p-inputNumber>
+                </div>
+            </div>
+            <br />
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="d-flex align-items-center">
+                <button pButton label="Cancelar" class="btn btn-outline-secondary" (click)="hideDialog()"></button>
+                <button pButton label="Salvar" class="d-flex ms-auto btn btn-primary m-0"
+                    (click)="saveProduct()"></button>
+            </div>
+        </ng-template>
+    </p-dialog>
+    <p-dialog header="Atenção" [(visible)]="warningDialog" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+        [draggable]="false" [resizable]="false">
+        <p class="p-m-0">Não foi possível editar este produto.</p>
+    </p-dialog>
+    <p-dialog header="Atenção" [(visible)]="dangerDialog" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+        [draggable]="false" [resizable]="false">
+        <p class="p-m-0">Não foi possível excluir esta ordem de pedido.</p>
+    </p-dialog>
+    <p-confirmDialog styleClass="w-50"></p-confirmDialog>
+</section>

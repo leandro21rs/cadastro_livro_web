@@ -1,0 +1,26 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="combo-chart">Combo Chart
+            </h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/chart/combo" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                    <p-chart type="bar" [data]="data" [options]="chartOptions" width="1000px"></p-chart>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

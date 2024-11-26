@@ -1,0 +1,288 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 name="input" id="input-text">Inputtext</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/inputtext" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Basic</label>
+                    <input class="form-control" type="text" pInputText [(ngModel)]="value1">
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Float Label</label>
+                    <span class="p-float-label">
+                        <input id="float-input" class="form-control" type="text" pInputText [(ngModel)]="value2">
+                        <label for="float-input">Username</label>
+                    </span>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Left Icon</label>
+                    <span class="p-input-icon-left w-100">
+                        <i class="fa-light fa-magnifying-glass"></i>
+                        <input class="form-control p-inputtext p-component" type="text" pInputText placeholder="Search"
+                            [(ngModel)]="value3" />
+                    </span>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Right Icon</label>
+                    <span class="p-input-icon-right w-100">
+                        <i class="fa-light fa-spinner-third pi-spin"></i>
+                        <input class="form-control p-inputtext p-component" type="text" pInputText
+                            [(ngModel)]="value4" />
+                    </span>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Left and Right Icons</label>
+                    <span class="p-input-icon-left p-input-icon-right w-100">
+                        <i class="fa-light fa-user"></i>
+                        <input class="form-control p-inputtext p-component" type="text" pInputText
+                            [(ngModel)]="value5" />
+                        <i class="fa-light fa-magnifying-glass"></i>
+                    </span>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Help Text</label>
+                    <input class="form-control" id="username1" type="username" aria-describedby="username1-help"
+                        pInputText [(ngModel)]="value6" />
+                    <small id="username1-help">Enter your username to reset your password.</small>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Invalid</label>
+                    <input class="form-control ng-invalid ng-dirty" pInputText type="text" placeholder="Invalid">
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Disabled</label>
+                    <input class="form-control" id="disabled-input" type="text" pInputText disabled="true"
+                        [(ngModel)]="value7" />
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Size</label>
+                    <!-- <input type="text" class="p-inputtext-sm" placeholder="Small" pInputText /> -->
+                    <input class="form-control" type="text" placeholder="Normal" pInputText />
+                    <!-- <input type="text" class="p-inputtext-lg" placeholder="Large" pInputText [(ngModel)]="value8" /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="input-text-area">Textarea</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/password" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-6">
+                    <label class="form-label">Default</label>
+                    <textarea class="w-100" pInputTextarea placeholder="Sua mensagem" [autoResize]="false" rows="3"
+                        [(ngModel)]="textAreaValue"></textarea>
+                </div>
+                <div class="col-lg-6">
+                    <label class="form-label">AutoResize</label>
+                    <textarea class="w-100" rows="3" pInputTextarea placeholder="Sua mensagem"
+                        [autoResize]="true"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="input-number">InputNumber</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/password" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Integer Only</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" inputId="integeronly" [(ngModel)]="inputNumberValue7">
+                    </p-inputNumber>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">User Locale</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputNumberValue6" inputId="locale-user" [minFractionDigits]="2">
+                    </p-inputNumber>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">United States</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputNumberValue5" inputId="currency-us" mode="currency" currency="USD" locale="en-US">
+                    </p-inputNumber>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Stacked</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputNumberValue1" [showButtons]="true" inputId="stacked" mode="currency" currency="USD">
+                    </p-inputNumber>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Horizontal with Step</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputNumberValue2" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" spinnerMode="horizontal" [step]="0.25"
+                    decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="currency" currency="EUR">
+                    </p-inputNumber>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Min-Max Boundaries</label>
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputNumberValue3" [showButtons]="true" mode="decimal"
+                        locale="pt-BR" incrementButtonIcon="fa-light fa-angle-up"
+                        decrementButtonIcon="fa-light fa-angle-down" [min]="0" [max]="100"></p-inputNumber>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <label class="form-label">Vertical</label><br />
+                    <p-inputNumber inputStyleClass="w-100" styleClass="w-10" [(ngModel)]="inputNumberValue4" [showButtons]="true" buttonLayout="vertical"
+                        spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary"
+                        incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
+                        decrementButtonIcon="pi pi-minus">
+                    </p-inputNumber>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="input-password">Password</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/password" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Basic</label>
+                    <p-password inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="password1" [feedback]="false"
+                        [toggleMask]="true"></p-password>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Show password</label>
+                    <p-password inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="password2" [toggleMask]="true">
+                    </p-password>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Templating</label>
+                    <p-password [(ngModel)]="password3" inputStyleClass="w-100" styleClass="w-100">
+                        <ng-template pTemplate="header">
+                            <h6>Pick a password</h6>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <p-divider></p-divider>
+                            <p class="p-mt-2">Suggestions</p>
+                            <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                                <li>At least one lowercase</li>
+                                <li>At least one uppercase</li>
+                                <li>At least one numeric</li>
+                                <li>Minimum 8 characters</li>
+                            </ul>
+                        </ng-template>
+                    </p-password>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="input-mask">InputMask</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/password" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Basic</label>
+                    <p-inputMask inputStyleClass="w-100" styleClass="w-100" mask="99-999999"
+                        [(ngModel)]="inputMaskValue1" placeholder="99-999999"></p-inputMask>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Date</label>
+                    <p-inputMask inputStyleClass="w-100" styleClass="w-100" mask="99/99/9999"
+                        [(ngModel)]="inputMaskValue2" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Phone</label>
+                    <p-inputMask inputStyleClass="w-100" styleClass="w-100" mask="(99) 99999-9999"
+                        [(ngModel)]="inputMaskValue3" placeholder="(999) 999-9999"></p-inputMask>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="input-switch">InputSwitch</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/inputswitch" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-6">
+                    <label class="form-label">Basic</label>                
+                    <p-inputSwitch inputStyleClass="w-100" [(ngModel)]="checked1"></p-inputSwitch>
+                </div>
+                <div class="col-lg-6">
+                    <label class="form-label">Preselection</label>
+                    <p-inputSwitch inputStyleClass="w-100" [(ngModel)]="checked2"></p-inputSwitch>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,218 @@
+<section id="main" class="container" role="main">
+    <div id="wizard-steps" class="card bg-white">
+        <div class="row g-3 my-5 py-2 justify-content-center">
+            <div class="col-lg-12">
+                <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+            </div>
+        </div>
+        <div *ngIf="activeIndex == 0">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <h4 class="m-0 fs-light">Dados pessoais</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <p class="text-muted">Insira seus dados pessoais</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-lg-12">
+                                    <label class="form-label">Nome <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" pInputText name="nome" autocomplete="off"
+                                        aria-describedby="aviso-nome">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label">CPF <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" name="cpf" mask="000.000.000-00"
+                                        autocomplete="off" aria-describedby="aviso-cpf">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label">RG <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" name="rg" mask="00.000.000-0"
+                                        autocomplete="off" aria-describedby="aviso-rg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2"></div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 1">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <h4 class="m-0 fs-light">Dados da empresa</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <p class="text-muted">Insira os dados da empresa</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-lg-6">
+                                    <label class="form-label">Razão social <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" pInputText name="razaoSocial" maxlength="80"
+                                        autocomplete="off" aria-describedby="aviso-razaoSocial">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label">CNPJ <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" name="cnpj" mask="00.000.000/0000-00"
+                                        autocomplete="off" aria-describedby="aviso-cnpj"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                </div>
+                                <div class="col-lg-7">
+                                    <label class="form-label">Logradouro <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" pInputText name="rua" maxlength="80"
+                                        autocomplete="off" aria-describedby="aviso-rua">
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <label class="form-label">Número <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" pInputText name="numero" maxlength="80"
+                                        autocomplete="off" aria-describedby="aviso-numero">
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="form-label">Complemento </label>
+                                    <input class="form-control" type="text" pInputText name="rua" maxlength="80"
+                                        autocomplete="off" aria-describedby="aviso-rua">
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="form-label">Telefone <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="text" name="telefone" mask="(00) 00000-0000"
+                                        autocomplete="off" aria-describedby="aviso-telefone">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label">E-mail <span class="text-muted">*</span></label>
+                                    <input class="form-control" type="email" name="email" autocomplete="off"
+                                        aria-describedby="aviso-email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 2">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <h4 class="m-0 fs-light">Confirmação</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-6">
+                            <p class="text-muted">Revise os dados e envie</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto">
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">Nome</label>
+                                <p class="col-10">Sergio de Moraes Barbosa Junior</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">CPF</label>
+                                <p class="col-10">000.000.000-00</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">RG</label>
+                                <p class="col-10">00.000.000-0</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">Razão social</label>
+                                <p class="col-10"></p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">CNPJ</label>
+                                <p class="col-10">00.000.000/0000-00</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">Endereço</label>
+                                <p class="col-10">Av. Presidente Vargas, 670 - 14 andar</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">Telefone</label>
+                                <p class="col-10">(21)98989-8989</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-2 form-label text-muted">E-mail</label>
+                                <p class="col-10"></p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Enviar" (onClick)="complete()"
+                                        icon="fa-light fa-check" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</section>

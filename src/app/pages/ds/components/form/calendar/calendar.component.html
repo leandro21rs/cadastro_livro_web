@@ -1,0 +1,114 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="calendar-popup">Popup</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/calendar" target="_blank" class="fs-5 px-2" pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2" pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Basic</label>
+                    <p-calendar inputId="basic" [(ngModel)]="date1"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">DateFormat</label>
+                    <p-calendar [(ngModel)]="date3" dateFormat="dd-mm-yy" inputId="dateformat"></p-calendar>                
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Icon</label>
+                    <p-calendar [(ngModel)]="value" dateFormat="dd/mm/yy" [showIcon]="true" icon="fa-light fa-calendar"></p-calendar>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Min-Max</label>
+                    <p-calendar [(ngModel)]="date4" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Disable Days</label>
+                    <p-calendar [(ngModel)]="date5" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true" inputId="disabledays"></p-calendar>              
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Navigators</label>
+                    <p-calendar [(ngModel)]="date6" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" inputId="navigators"></p-calendar>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Time</label>
+                    <p-calendar [(ngModel)]="date7" [showTime]="true" inputId="time"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Time Only</label>
+                    <p-calendar [(ngModel)]="date8" [timeOnly]="true" inputId="timeonly"></p-calendar>         
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Multiple</label>
+                    <p-calendar [(ngModel)]="dates" selectionMode="multiple" [readonlyInput]="true" inputId="multiple"></p-calendar>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Range</label>
+                    <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Buttn Bar Only</label>
+                    <p-calendar [(ngModel)]="date9" showButtonBar="true" inputId="buttonbar"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Date Template</label>
+                    <p-calendar [(ngModel)]="date10" inputId="template">
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#81C784' : 'inherit'}" style="border-radius:50%; padding: .25em; width: 2em; height: 2em; display:block">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar>
+                </div>
+            </div>
+            <div class="row gx-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Multiple Months</label>
+                    <p-calendar [(ngModel)]="date11" [numberOfMonths]="3" inputId="multiplemonths"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Month Picker</label>
+                    <p-calendar [(ngModel)]="date12" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" inputId="monthpicker"></p-calendar>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Touch UI</label>
+                    <p-calendar [(ngModel)]="date13" [touchUI]="true" [readonlyInput]="true" inputId="touchui"></p-calendar>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="calendar-inline">Inline</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/calendar" target="_blank" class="fs-5 px-2" pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2" pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <label class="form-label">Inline</label>
+                    <p-calendar [(ngModel)]="date2" [inline]="true"></p-calendar>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

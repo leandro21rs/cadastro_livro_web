@@ -1,0 +1,61 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="teste">Validação</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <form aria-labelledby="title" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div class="card-body">
+                <p-messages [(value)]="msg" [enableService]="false"></p-messages>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-lg-6">
+                        <h4 class="m-0 fs-light">Dados pessoais</h4>
+                    </div>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-lg-6">
+                        <p class="text-muted">Insira seus dados pessoais</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="row g-3 justify-content-center">
+                            <div class="col-lg-12">
+                                <label class="form-label">Nome <span class="text-muted">*</span></label>
+                                <input class="form-control" type="text" pInputText formControlName="nome">
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="form-label">CPF <span class="text-muted">*</span></label>
+                                <input class="form-control" type="text" pInputText formControlName="cpf" mask="000.000.000-00" />
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="form-label">RG <span class="text-muted">*</span></label>
+                                <input class="form-control" type="text" pInputText formControlName="rg" mask="00.000.000-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                            <div class="me-2"></div>
+                            <div>
+                                <p-button type="submit" styleClass="btn btn-primary" label="Enviar"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,56 @@
+<section id="main" class="container" role="main">
+    <div *ngIf="product?.length > 0; else notFound">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <img [src]="'assets/showcase/images/demo/product/' + product[0].image" [alt]="product[0].image" class="product-image" *ngIf="product[0].image">
+            </div>
+            <div class="col-12 col-md-9">
+                <h3>{{ product[0]?.name }}</h3>
+                <p>{{ product[0]?.description }}</p>
+                <h6>{{ product[0]?.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</h6>
+                <p>Quantidade: {{ product[0]?.quantity }}</p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="card">
+                <p-table [value]="product[0].orders">
+                    <ng-template pTemplate="header">
+                        <br />
+                        <tr>
+                            <th pSortableColumn="id">Código <p-sortIcon field="id"></p-sortIcon></th>
+                            <th pSortableColumn="customer">Cliente <p-sortIcon field="customer"></p-sortIcon></th>
+                            <th pSortableColumn="date">Data <p-sortIcon field="date"></p-sortIcon></th>
+                            <th pSortableColumn="amount">Preço <p-sortIcon field="amount"></p-sortIcon></th>
+                            <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-order>
+                        <tr>
+                            <td>{{order.id}}</td>
+                            <td>{{order.customer}}</td>
+                            <td>{{order.date}}</td>
+                            <td>{{order.amount | currency:'BRL'}}</td>
+                            <td>
+                                <span [ngClass]="[
+                                    order.status === 'CANCELLED' ? 'badge badge-danger text-bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25' : '' ||
+                                    order.status === 'PENDING' ? 'badge badge-warning text-bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25' : '' ||
+                                    order.status === 'DELIVERED' ? 'badge badge-success text-bg-success bg-opacity-10 text-success border border-success border-opacity-25' : '' ||
+                                    order.status === 'RETURNED' ? 'badge badge-primary text-bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25' : ''
+                                ]">
+                                    {{order.status}}
+                                </span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="5">Ainda não há pedidos para este produto.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <ng-template #notFound>Este produto não existe</ng-template>
+</section>

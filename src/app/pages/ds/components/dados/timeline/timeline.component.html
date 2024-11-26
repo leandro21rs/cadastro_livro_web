@@ -1,0 +1,203 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-left-align">Left Align</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-timeline [value]="events1">
+                        <ng-template pTemplate="content" let-event>
+                            &#123;&#123;event.status&#125;&#125;
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-right-align">Right Align</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-timeline [value]="events1" align="right">
+                        <ng-template pTemplate="content" let-event>
+                            &#123;&#123;event.status&#125;&#125;
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-alternate-align">Alternate Align</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-timeline [value]="events1" align="alternate">
+                        <ng-template pTemplate="content" let-event>
+                            &#123;&#123;event.status&#125;&#125;
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-opposite">Opposite Content</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-timeline [value]="events1">
+                        <ng-template pTemplate="content" let-event>
+                            <small class="p-text-secondary">&#123;&#123;event.date&#125;&#125;</small>
+                        </ng-template>
+                        <ng-template pTemplate="opposite" let-event>
+                            &#123;&#123;event.status&#125;&#125;
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-customized">Customized</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-timeline [value]="events1" align="alternate" styleClass="customized-timeline">
+                        <ng-template pTemplate="marker" let-event>
+                            <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+                                        <i [ngClass]="event.icon" style="color: white"></i>
+                                    </span>
+                        </ng-template>
+                        <ng-template pTemplate="content" let-event>
+                            <p-card [header]="event.status" [subheader]="event.date">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
+                                    neque quas!</p>
+                                <button pButton label="Read more" class="p-button-text"></button>
+                            </p-card>
+                        </ng-template>
+                    </p-timeline>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="timeline-horizontal">Horizontal</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/timeline" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                   
+                    <h6>Top Align</h6>
+                    <div class="col-12">
+                        <p-timeline [value]="events2" layout="horizontal" align="top">
+                            <ng-template pTemplate="content" let-event>
+                                &#123;&#123;event&#125;&#125;
+                            </ng-template>
+                        </p-timeline>
+                    </div>
+
+                    <h6>Bottom Align</h6>
+                    <div class="col-12">
+                        <p-timeline [value]="events2" layout="horizontal" align="bottom">
+                            <ng-template pTemplate="content" let-event>
+                                &#123;&#123;event&#125;&#125;
+                            </ng-template>
+                        </p-timeline>
+                    </div>
+
+                    <h6>Alternate Align</h6>
+                    <div class="col-12">
+                        <p-timeline [value]="events2" layout="horizontal" align="alternate">
+                            <ng-template pTemplate="content" let-event>
+                                &#123;&#123;event&#125;&#125;
+                            </ng-template>
+                            <ng-template pTemplate="opposite" let-event>
+                                &nbsp;
+                            </ng-template>
+                        </p-timeline>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

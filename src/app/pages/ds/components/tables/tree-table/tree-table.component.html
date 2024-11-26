@@ -1,0 +1,41 @@
+<section id="main" class="container" role="main">
+    <h5>Basic</h5>
+    <p-treeTable id="table-tree" class="card bg-light pt-1" [value]="files1">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>Tamanho</th>
+                <th>Tipo</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr [ttRow]="rowNode">
+                <td>
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{rowData.name}}
+                </td>
+                <td>{{rowData.size}}</td>
+                <td>{{rowData.type}}</td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+
+    <h5>Dynamic Columns</h5>
+    <p-treeTable id="table-tree" class="card bg-light pt-1" [value]="files2" [columns]="cols">
+        <ng-template pTemplate="header" let-columns>
+            <tr [ttRow]="rowNode">
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns; let i = index">
+                    <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+</section>

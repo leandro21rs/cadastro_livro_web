@@ -1,0 +1,29 @@
+<div id="header-top" class="position-relative">
+
+   
+    <div id="header-bleb"></div>
+    <header id="header-product" class="position-relative color-bg-dark-blue w-100">
+        <div class="container">
+            <div id="menu-product">
+              <div class="d-table-cell align-middle">
+                <div class="menu-icon d-table-cell align-middle" (click)="onShow()">
+                    <span class="burger"></span> <span class="menu-label text-xsm">Menu</span>
+                </div>
+                <a class="logo-product d-table-cell align-middle" href="">
+                  <span class="menu-divisor"></span>                  
+                </a>
+              </div>
+            
+            </div>
+            <h1 class="area-title d-inline-block text-truncate fw-lighter">
+                <a href="/livro-web" class="name-system">{{ systemName }}</a>
+            </h1>            
+        </div>
+    </header>
+    <!-- Mostra qual subarea você está (fora pagina de HOME)-->
+    <h2 *ngIf="currentPage && currentPage != 'Design System' && currentPage != 'Befis Web'" class="subarea-title text-truncate">
+        <a style="cursor:pointer">{{ currentPage }}</a>
+    </h2>
+    
+</div>
+<div id="header-overlay" class=""></div>

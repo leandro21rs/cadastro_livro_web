@@ -1,0 +1,490 @@
+<div style="padding: 20px">
+    <div class="row">
+        <div class="col-12 col-md-12 col-lg-5">
+            <!-- SERVIÇOS EM DESTAQUE -->
+            <div class="row">
+                <div class="col-12">
+                    <p>SERVIÇOS EM DESTAQUE</p>
+                    <hr />
+                </div>
+            </div>
+            <div *ngIf="username; else loggedOut">
+                <div class="row">
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-4" *ngFor="let servico of servicos">
+                            <a (click)="return">
+                                <div style="padding: 1.25rem;
+                                margin-top: 0rem;
+                                margin-bottom: 1rem;
+                                border: 1px solid rgba(237, 237, 237, 1);
+                                border-left-width: .2rem;" class="card bd-callout-primary">
+                                    <h6 class="text-primary mb-2">{{ servico.label }}</h6>
+                                    <p style="font-size: 12px" class="mb-1 lh-140 text-muted">{{ servico.descricaoApp
+                                        }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #loggedOut>
+                <div class="row">
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-4" *ngFor="let component of comp">
+                            <a (click)="return" routerLink="/{{component.rota}}">
+                                <div style="padding: 1.25rem;
+                                margin-top: 0rem;
+                                margin-bottom: 1rem;
+                                border: 1px solid rgba(237, 237, 237, 1);
+                                border-left-width: .2rem;" class="card bd-callout-primary">
+                                    <h6 class="text-primary mb-2">{{ component.label }}</h6>
+                                    <p style="font-size: 12px" class="mb-1 lh-140 text-muted">{{ component.descricaoApp
+                                        }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- SUAS ATIVIDADES PENDENTES -->
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <p>SUAS ATIVIDADES PENDENTES</p>
+                    <hr />
+                </div>
+            </div>
+            <div class="row" *ngIf="restituicao">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-7">
+                                <span style="color: grey">Requerente</span>
+                                <p style="font-size: 14px">{{restituicao.requerente}} ({{restituicao.cpf}})</p>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <span style="
+                                        border-radius: 3px;    
+                                        padding: 0.25em 0.5rem;
+                                        text-transform: uppercase;
+                                        font-weight: 700;
+                                        font-size: 12px;
+                                        letter-spacing: .3px;
+                                        background-color:rgba(255, 119, 51, 1);
+                                        color:rgb(245, 245, 245)">{{restituicao.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-3">
+                                <span style="color: grey">Valor</span>
+                                <p style="font-size: 14px">{{restituicao.valor.toLocaleString('pt-BR', { style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                            <div class="col-12 col-sm-9">
+                                <span style="color: grey">N° GRE</span>
+                                <p style="font-size: 14px">{{restituicao.nGre}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Restituir"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="apostilamento">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-3">
+                                <span style="color: grey">N° GRE</span>
+                                <p style="font-size: 14px">{{apostilamento.nGre}}</p>
+                            </div>
+                            <div class="col-12 col-sm-3">
+                                <span style="color: grey">Tipo GRE</span>
+                                <p style="font-size: 14px">{{apostilamento.tipoGre}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="
+                                            border-radius: 3px;    
+                                            padding: 0.25em 0.5rem;
+                                            text-transform: uppercase;
+                                            font-weight: 700;
+                                            font-size: 12px;
+                                            letter-spacing: .3px;
+                                            background-color: #377dff;
+                                            color:rgb(245, 245, 245)">{{apostilamento.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Valor Original</span>
+                                <p style="font-size: 14px">{{apostilamento.valorOriginal.toLocaleString('pt-BR', { style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Valor de Apostilamento</span>
+                                <p style="font-size: 14px">{{apostilamento.valorApostilamento.toLocaleString('pt-BR', { style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Apostilar"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="acessoUsuario">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-8">
+                                <span style="color: grey">Requerente</span>
+                                <p style="font-size: 14px">{{acessoUsuario.requerente}} ({{acessoUsuario.cpf}})</p>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <span style="
+                                        border-radius: 3px;    
+                                        padding: 0.25em 0.5rem;
+                                        text-transform: uppercase;
+                                        font-weight: 700;
+                                        font-size: 12px;
+                                        letter-spacing: .3px;
+                                        background-color:#00a650;
+                                        color:rgb(245, 245, 245)">{{acessoUsuario.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Órgão</span>
+                                <p style="font-size: 14px">{{acessoUsuario.orgao}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Setor</span>
+                                <p style="font-size: 14px">{{acessoUsuario.setor}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Autorizar"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto me-auto"></div>
+                <div class="col-auto">
+                    <button pButton pRipple type="button" label="Ver Todas" routerLink="/ds/template/pending-activities"></button>
+                </div>
+            </div>
+            <br />
+            <!-- ÚLTIMAS ATIVIDADES -->
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>ÚLTIMAS ATIVIDADES</p>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="row"
+                        style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: auto">
+                        <!-- <p-timeline [value]="events" styleClass="customized-timeline">
+                            <ng-template pTemplate="marker" let-event>
+                                <span class="custom-marker p-shadow-2">
+                                    <i [ngClass]="event.icon" style="color: #377dff; font-size: 1.3rem;"></i>
+                                </span>
+                            </ng-template>
+                            <ng-template pTemplate="opposite" let-event>
+                                <small class="p-text-secondary">&#123;&#123;event.date&#125;&#125;</small>
+                                <p style="font-size: 12px; font-weight: bold">&#123;&#123;event.info&#125;&#125;</p>
+                            </ng-template>
+                            <ng-template pTemplate="content" let-event>
+                                <p>&#123;&#123;event.principal&#125;&#125;</p>
+                                <div class="row">
+                                    <div class="col-12 col-lg-4">
+                                        <span [ngStyle]="{'background-color': event.status ? '#00a650' : '#f23d4f'}"
+                                            style="
+                                                border-radius: 3px;    
+                                                padding: 0.25em 0.5rem;
+                                                text-transform: uppercase;
+                                                font-weight: 700;
+                                                font-size: 12px;
+                                                letter-spacing: .3px;
+                                                color:rgb(245, 245, 245);
+                                                margin-left: 1px
+                                            ">{{event.status ? 'Sucesso' : 'Erro'}}
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-lg-8">
+                                        <span style="font-size: 10px">{{event.message}}</span>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-timeline> -->
+                        <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+                            <ng-template pTemplate="marker" let-event>
+                                <span class="custom-marker p-shadow-2">
+                                    <i [ngClass]="event.icon" style="color: #377dff; font-size: 1.3rem;"></i>
+                                </span>
+                            </ng-template>
+                            <ng-template pTemplate="content" let-event>
+                                <p-card>
+                                    <div class="row" style="padding: -1rem">
+                                        <div class="col-12 col-sm-12 col-lg-8">
+                                            <p>&#123;&#123;event.principal&#125;&#125;</p>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-4">
+                                            <span [ngStyle]="{'background-color': event.status ? '#00a650' : '#f23d4f'}"
+                                                style="
+                                                border-radius: 3px;    
+                                                padding: 0.25em 0.5rem;
+                                                text-transform: uppercase;
+                                                font-weight: 700;
+                                                font-size: 12px;
+                                                letter-spacing: .3px;
+                                                color:rgb(245, 245, 245);
+                                                margin-left: 1px
+                                            ">{{event.status ? 'Sucesso' : 'Erro'}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12" style="margin-top: -10px; margin-bottom: 10px">
+                                            <span style="font-size: 12px">{{event.message}}</span>
+                                        </div>
+                                        <div class="col-12" style="margin-bottom: 10px">
+                                            <small class="p-text-secondary">&#123;&#123;event.date&#125;&#125;</small>
+                                        </div>
+                                        <div class="col-12" style="margin-bottom: 10px">
+                                            <p style="font-size: 12px; font-weight: bold">
+                                                &#123;&#123;event.info&#125;&#125;</p>
+                                        </div>
+                                    </div>
+                                </p-card>
+                            </ng-template>
+                        </p-timeline>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-12 col-lg-7">
+            <!-- FATURAMENTO -->
+            <div class="row">
+                <div class="col-12">
+                    <p>FATURAMENTO</p>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6" style="margin-bottom: 5px;" *ngIf="gresEmVencimento">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: 110px">
+                        <div class="row" style="margin-bottom: 5px">
+                            <div class="col-auto me-auto">
+                                <span style="font-size: 14px; font-weight: bold">{{gresEmVencimento.desc}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" style="height: 25px" class="p-button-primary" pButton
+                                    icon="fa-light fa-angle-down p-input-icon-right" label={{gresEmVencimento.dia}}
+                                    (click)="changeDate($event, menu, 1)"></button>
+                                <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto me-auto">
+                                <div class="overview-box-count"
+                                    [ngStyle]="{'color': gresEmVencimento.status ? '#00a650' : '#f23d4f'}">
+                                    <i
+                                        [ngClass]="[gresEmVencimento.status ? 'pi pi-arrow-circle-up' : 'pi pi-arrow-circle-down' ]"></i>
+                                    {{gresEmVencimento.porcent}}%
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <span style="font-size: 20px; color: #377dff">{{gresEmVencimento.qtd}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6" style="margin-bottom: 5px;" *ngIf="gresPagas">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: 110px">
+                        <div class="row" style="margin-bottom: 5px">
+                            <div class="col-auto me-auto">
+                                <span style="font-size: 14px; font-weight: bold">{{gresPagas.desc}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" style="height: 25px" class="p-button-primary" pButton
+                                    icon="fa-light fa-angle-down p-input-icon-right" label={{gresPagas.dia}}
+                                    (click)="changeDate($event, menu, 2)"></button>
+                                <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto me-auto">
+                                <div class="overview-box-count"
+                                    [ngStyle]="{'color': gresPagas.status ? '#00a650' : '#f23d4f'}">
+                                    <i
+                                        [ngClass]="[gresPagas.status ? 'pi pi-arrow-circle-up' : 'pi pi-arrow-circle-down' ]"></i>
+                                    {{gresPagas.porcent}}%
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <span style="font-size: 20px; color: #00a650">{{gresPagas.qtd}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6" style="margin-bottom: 5px;" *ngIf="prevFaturamento">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: 110px">
+                        <div class="row" style="margin-bottom: 5px">
+                            <div class="col-auto me-auto">
+                                <span style="font-size: 14px; font-weight: bold">{{prevFaturamento.desc}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" style="height: 25px" class="p-button-primary" pButton
+                                    icon="fa-light fa-angle-down p-input-icon-right" label={{prevFaturamento.dia}}
+                                    (click)="changeDate($event, menu, 3)"></button>
+                                <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto me-auto">
+                                <div class="overview-box-count"
+                                    [ngStyle]="{'color': prevFaturamento.status ? '#00a650' : '#f23d4f'}">
+                                    <i
+                                        [ngClass]="[prevFaturamento.status ? 'pi pi-arrow-circle-up' : 'pi pi-arrow-circle-down' ]"></i>
+                                    {{prevFaturamento.porcent}}%
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div style="font-size: 20px; color: #377dff">{{prevFaturamento.valor}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6" style="margin-bottom: 5px;" *ngIf="pagamentosConf">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: 110px">
+                        <div class="row" style="margin-bottom: 5px">
+                            <div class="col-auto me-auto">
+                                <span style="font-size: 14px; font-weight: bold">{{pagamentosConf.desc}}</span>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" style="height: 25px" class="p-button-primary" pButton
+                                    icon="fa-light fa-angle-down p-input-icon-right" label={{pagamentosConf.dia}}
+                                    (click)="changeDate($event, menu, 4)"></button>
+                                <p-menu #menu [popup]="true" [model]="items"></p-menu>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-auto me-auto">
+                                <div class="overview-box-count"
+                                    [ngStyle]="{'color': pagamentosConf.status ? '#00a650' : '#f23d4f'}">
+                                    <i
+                                        [ngClass]="[pagamentosConf.status ? 'pi pi-arrow-circle-up' : 'pi pi-arrow-circle-down' ]"></i>
+                                    {{pagamentosConf.porcent}}%
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <span style="font-size: 20px; color: #00a650">{{pagamentosConf.valor}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- EVOLUÇÃO DE FATURAMENTO (MENSAL) -->
+            <br />
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: auto">
+                        <div class="row">
+                            <div class="col-auto me-auto">
+                                <span>EVOLUÇÃO DE FATURAMENTO ({{invoicing}})</span>
+                            </div>
+                            <div class="col-auto">
+                                <button pButton pRipple type="button" label="Hoje"
+                                    [ngClass]="[dataOption == 1 ? 'p-button-secondary me-2 mb-2' : 'p-button-secondary p-button-text me-2 mb-2' ]"
+                                    (click)="setChartOption(1)"></button>
+                                <button pButton pRipple type="button" label="Semanal"
+                                    [ngClass]="[dataOption == 2 ? 'p-button-secondary me-2 mb-2' : 'p-button-secondary p-button-text me-2 mb-2' ]"
+                                    (click)="setChartOption(2)"></button>
+                                <button pButton pRipple type="button" label="Mensal"
+                                    [ngClass]="[dataOption == 3 ? 'p-button-secondary me-2 mb-2' : 'p-button-secondary p-button-text me-2 mb-2' ]"
+                                    (click)="setChartOption(3)"></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" *ngIf="dataOption == 1">
+                                <p-chart type="bar" [data]="data1" [options]="chartOptions" [style]="{'width': '100%'}">
+                                </p-chart>
+                            </div>
+                            <div class="col-12" *ngIf="dataOption == 2">
+                                <p-chart type="bar" [data]="data2" [options]="chartOptions" [style]="{'width': '100%'}">
+                                </p-chart>
+                            </div>
+                            <div class="col-12" *ngIf="dataOption == 3">
+                                <p-chart type="bar" [data]="data3" [options]="chartOptions" [style]="{'width': '100%'}">
+                                </p-chart>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto me-auto"></div>
+                            <div class="col-auto">
+                                <button pButton pRipple type="button" label="Listar GREs"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="row" style="cursor: pointer; margin: 1px;">
+                        <div class="col align-self-center"
+                            style="background-color: rgba(242, 61, 79, 1); padding: 5px; border-radius: 2px; height: 150px;">
+                            <i class="pi pi-exclamation-triangle"
+                                style="color: white; font-size: 3rem; flex: 1; align-items: center; justify-content: center; display: flex; padding-top: 5px"></i>
+                            <span
+                                style="font-size: 35px; color: white; flex: 1; align-items: center; justify-content: center; display: flex;">12</span>
+                            <span
+                                style="color: white; flex: 1; align-items: center; justify-content: center; display: flex;">Inconsistências</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="row" style="cursor: pointer; margin: 1px;">
+                        <div class="col align-self-center"
+                            style="background-color: rgba(255, 119, 51, 1); padding: 5px; border-radius: 2px; height: 150px">
+                            <i class="pi pi-exclamation-triangle"
+                                style="color: white; font-size: 3rem; flex: 1; align-items: center; justify-content: center; display: flex; padding-top: 5px"></i>
+                            <span
+                                style="font-size: 35px; color: white; flex: 1; align-items: center; justify-content: center; display: flex;">12</span>
+                            <span
+                                style="color: white; flex: 1; align-items: center; justify-content: center; display: flex;">Inconsistências</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="row" style="cursor: pointer; margin: 1px;">
+                        <div class="col align-self-center"
+                            style="background-color: rgba(0, 166, 80, 1); padding: 5px; border-radius: 2px; height: 150px">
+                            <i class="pi pi-exclamation-triangle"
+                                style="color: white; font-size: 3rem; flex: 1; align-items: center; justify-content: center; display: flex; padding-top: 5px"></i>
+                            <span
+                                style="font-size: 35px; color: white; flex: 1; align-items: center; justify-content: center; display: flex;">12</span>
+                            <span
+                                style="color: white; flex: 1; align-items: center; justify-content: center; display: flex;">Inconsistências</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="row" style="cursor: pointer; margin: 1px;">
+                        <div class="col align-self-center"
+                            style="background-color: rgba(55, 125, 255, 1); padding: 5px; border-radius: 2px; height: 150px">
+                            <i class="pi pi-exclamation-triangle"
+                                style="color: white; font-size: 3rem; flex: 1; align-items: center; justify-content: center; display: flex; padding-top: 5px"></i>
+                            <span
+                                style="font-size: 35px; color: white; flex: 1; align-items: center; justify-content: center; display: flex;">12</span>
+                            <span
+                                style="color: white; flex: 1; align-items: center; justify-content: center; display: flex;">Inconsistências</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

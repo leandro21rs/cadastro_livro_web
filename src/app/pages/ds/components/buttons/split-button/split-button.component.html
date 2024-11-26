@@ -1,0 +1,241 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-basic">Basic</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Salvar" [model]="items"></p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-severities">Severities</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('info')" [model]="items"
+                        styleClass="p-mr-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-secondary me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('success')" [model]="items"
+                        styleClass="p-button-success me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-info me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('warn')" [model]="items"
+                        styleClass="p-button-warning me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-help me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Save" icon="pi pi-plus" (onClick)="save('error')" [model]="items"
+                        styleClass="p-button-danger me-2 mb-2"></p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-raised">Raised buttons</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Primary" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-primary me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Secondary" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-secondary me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Success" (onClick)="save('success')" [model]="items"
+                        styleClass="p-button-success me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Info" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-info me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Warning" (onClick)="save('warn')" [model]="items"
+                        styleClass="p-button-warning me-2"></p-splitButton>
+                    <p-splitButton label="Help" (onClick)="save('info')" [model]="items"
+                        styleClass="p-button-help me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Danger" (onClick)="save('error')" [model]="items"
+                        styleClass="p-button-danger">
+                    </p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-text">Text buttons</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Primary" [model]="this.items"
+                        styleClass="p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Secondary" [model]="this.items"
+                        styleClass="p-button-text p-button-secondary p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Success" [model]="this.items"
+                        styleClass="p-button-text p-button-success p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Info" [model]="this.items"
+                        styleClass="p-button-text p-button-info p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Warning" [model]="this.items"
+                        styleClass="p-button-text p-button-warning p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Help" [model]="this.items"
+                        styleClass="p-button-text p-button-help p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Danger" [model]="this.items"
+                        styleClass="p-button-text p-button-danger p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Plain" [model]="this.items"
+                        styleClass="p-button-text p-button-plain p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split--raised-text">Raised text buttons</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Primary" [model]="this.items"
+                        styleClass="p-button-raised p-button-text p-mr-2 p-mb-2 me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Secondary" [model]="this.items"
+                        styleClass="p-button-raised p-button-secondary p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Success" [model]="this.items"
+                        styleClass="p-button-raised p-button-success p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Info" [model]="this.items"
+                        styleClass="p-button-raised p-button-info p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Warning" [model]="this.items"
+                        styleClass="p-button-raised p-button-warning p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Help" [model]="this.items"
+                        styleClass="p-button-raised p-button-help p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Danger" [model]="this.items"
+                        styleClass="p-button-raised p-button-danger p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Plain" [model]="this.items"
+                        styleClass="p-button-raised p-button-plain p-button-text p-mr-2 p-mb-2 me-2 mb-2">
+                    </p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-outline">Outlined buttons</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Primary" [model]="this.items" styleClass="p-button-outlined me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Secondary" [model]="this.items"
+                        styleClass="p-button-outlined p-button-secondary me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Success" [model]="this.items"
+                        styleClass="p-button-outlined p-button-success me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Info" [model]="this.items"
+                        styleClass="p-button-outlined p-button-info me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Warning" [model]="this.items"
+                        styleClass="p-button-outlined p-button-warning me-2 mb-2"></p-splitButton>
+                    <p-splitButton label="Help" [model]="this.items"
+                        styleClass="p-button-outlined p-button-help me-2 mb-2">
+                    </p-splitButton>
+                    <p-splitButton label="Danger" [model]="this.items" styleClass="p-button-outlined p-button-danger">
+                    </p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="split-size">Sizes</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/splitbutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-splitButton label="Pequeno" [model]="this.items" styleClass="p-button-sm me-2">
+                    </p-splitButton>
+                    <p-splitButton label="Padrão" [model]="this.items" styleClass="me-2"></p-splitButton>
+                    <p-splitButton label="Grande" [model]="this.items" styleClass="p-button-lg me-2">
+                    </p-splitButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

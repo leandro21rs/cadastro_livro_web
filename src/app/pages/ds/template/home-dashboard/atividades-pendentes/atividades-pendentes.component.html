@@ -1,0 +1,128 @@
+<section id="main" class="container" role="main">
+    <p-tabView>
+        <p-tabPanel header="Restituição">
+            Restituição
+            <div class="row" *ngFor="let restituicao of restituicoes">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-5">
+                                <span style="color: grey">Requerente</span>
+                                <p style="font-size: 14px">{{restituicao.requerente}} ({{restituicao.cpf}})</p>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <span style="
+                                border-radius: 3px;    
+                                padding: 0.25em 0.5rem;
+                                text-transform: uppercase;
+                                font-weight: 700;
+                                font-size: 12px;
+                                letter-spacing: .3px;
+                                background-color:rgba(255, 119, 51, 1);
+                                color:rgb(245, 245, 245)">{{restituicao.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-5">
+                                <span style="color: grey">Valor</span>
+                                <p style="font-size: 14px">{{restituicao.valor.toLocaleString('pt-BR', { style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <span style="color: grey">N° GRE</span>
+                                <p style="font-size: 14px">{{restituicao.nGre}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Restituir"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+
+        </p-tabPanel>
+        <p-tabPanel header="Apostilamento">
+            Apostilamento
+            <div class="row" *ngFor="let apostilamento of apostilamentos">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-3">
+                                <span style="color: grey">N° GRE</span>
+                                <p style="font-size: 14px">{{apostilamento.nGre}}</p>
+                            </div>
+                            <div class="col-12 col-sm-3">
+                                <span style="color: grey">Tipo GRE</span>
+                                <p style="font-size: 14px">{{apostilamento.tipoGre}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="
+                                    border-radius: 3px;    
+                                    padding: 0.25em 0.5rem;
+                                    text-transform: uppercase;
+                                    font-weight: 700;
+                                    font-size: 12px;
+                                    letter-spacing: .3px;
+                                    background-color: #377dff;
+                                    color:rgb(245, 245, 245)">{{apostilamento.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Valor Original</span>
+                                <p style="font-size: 14px">{{apostilamento.valorOriginal.toLocaleString('pt-BR', {
+                                    style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Valor de Apostilamento</span>
+                                <p style="font-size: 14px">{{apostilamento.valorApostilamento.toLocaleString('pt-BR', {
+                                    style:
+                                    'currency', currency: 'BRL' })}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Apostilar"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Acesso Usuário">
+            Acesso Usuário
+            <div class="row" *ngFor="let acessoUsuario of acessoUsuarios">
+                <div class="col-12 col-md-12" style="margin-bottom: 5px">
+                    <div style="background-color: rgb(245, 245, 245); padding: 5px; border-radius: 5px; height: AUTO">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Requerente</span>
+                                <p style="font-size: 14px">{{acessoUsuario.requerente}} ({{acessoUsuario.cpf}})</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="
+                                border-radius: 3px;    
+                                padding: 0.25em 0.5rem;
+                                text-transform: uppercase;
+                                font-weight: 700;
+                                font-size: 12px;
+                                letter-spacing: .3px;
+                                background-color:#00a650;
+                                color:rgb(245, 245, 245)">{{acessoUsuario.status}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Órgão</span>
+                                <p style="font-size: 14px">{{acessoUsuario.orgao}}</p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <span style="color: grey">Setor</span>
+                                <p style="font-size: 14px">{{acessoUsuario.setor}}</p>
+                            </div>
+                        </div>
+                        <button pButton type="button" label="Autorizar"
+                            class="btn btn-outline-primary me-2 mb-2"></button>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+</section>

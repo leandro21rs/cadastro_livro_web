@@ -1,0 +1,45 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="select-single">Single Selection</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/selectbutton" target="_blank" class="fs-5 px-2" pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2" pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+
+                <div class="col-lg-12">
+                    <p-selectButton [options]="stateOptions" [(ngModel)]="selectedButton" optionLabel="label" optionValue="value"></p-selectButton>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="select-multiple">Multiple Selection</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/selectbutton" target="_blank" class="fs-5 px-2" pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2" pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-6">
+                    <p-selectButton [options]="selectButtonValues" [(ngModel)]="selectedButtonMValue" multiple="multiple" optionLabel="name" optionValue="value"></p-selectButton>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

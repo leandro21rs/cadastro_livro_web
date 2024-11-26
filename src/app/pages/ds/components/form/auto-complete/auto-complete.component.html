@@ -1,0 +1,125 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="autocomplete-basic">Basic</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/autocomplete" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <!-- <p-autoComplete inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="inputCountry"
+                        [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)"
+                        (ngModelChange)="changeCountry($event)"></p-autoComplete> -->
+                    <p-autoComplete inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="selectedCountry"
+                        [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name"
+                        [minLength]="1"></p-autoComplete>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="autocomplete-dropdown">Dropdown and Templating</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/autocomplete" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-autoComplete inputStyleClass="w-100" styleClass="w-100" [(ngModel)]="selectedCountryAdvanced"
+                        [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name"
+                        [dropdown]="true">
+                        <ng-template let-country pTemplate="item">
+                            <div class="country-item">
+                                <div>{{country.name}}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="autocomplete-grouped">Grouped</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/autocomplete" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <p-autoComplete inputStyleClass="w-100" styleClass="w-100" [group]="true" [suggestions]="filteredGroups"
+                        (completeMethod)="filterGroupedCity($event)" field="label" [multiple]="true" [dropdown]="true">
+                        <ng-template let-group pTemplate="group">
+                            <div class="p-d-flex p-ai-center">
+                                <span>{{group.label}}</span>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
+                    <p-autoComplete inputStyleClass="w-100" styleClass="w-100" [group]="true" [suggestions]="filteredGroups"
+                    (completeMethod)="filterGroupedCity($event)" field="label" [multiple]="true" [dropdown]="false">
+                    <ng-template let-group pTemplate="group">
+                        <div class="p-d-flex p-ai-center">
+                            <span>{{group.label}}</span>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="autocomplete-multiple">Multiple</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/autocomplete" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-12">
+                    <span class="p-fluid">
+                        <p-autoComplete [(ngModel)]="selectedCountries" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name" [multiple]="true">
+                        </p-autoComplete>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

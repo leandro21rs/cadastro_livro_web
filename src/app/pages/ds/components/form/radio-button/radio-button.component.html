@@ -1,0 +1,122 @@
+<section id="main" class="container" role="main">
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="radio-basic">Basic</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/radiobutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-6">
+                    <label class="form-label">Vertical</label>
+                    <div class="field-checkbox">
+                        <div class="form-check mb-2">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton class="form-check-input" name="city" value="Chicago" [(ngModel)]="city"
+                                    inputId="city1"></p-radioButton>
+                                <label class="form-check-label ms-2 lh-110" for="city1">Chicago</label>
+                            </div>
+                        </div>
+                        <div class="form-check mb-2">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton class="form-check-input" name="city" value="Los Angeles"
+                                    [(ngModel)]="city" inputId="city2"></p-radioButton>
+                                <label class="form-check-label ms-2 lh-110" for="city2">Los Angeles</label>
+                            </div>
+                        </div>
+                        <div class="form-check mb-2">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton class="form-check-input" name="city" value="New York" [(ngModel)]="city"
+                                    inputId="city3"></p-radioButton>
+                                <label class="form-check-label ms-2 lh-110" for="city3">New York</label>
+                            </div>
+                        </div>
+                        <div class="form-check mb-2">
+                            <div class="p-field-radiobutton">
+                                <p-radioButton class="form-check-input" name="city" value="San Francisco"
+                                    [(ngModel)]="city" inputId="city4"></p-radioButton>
+                                <label class="form-check-label ms-2 lh-110" for="city4">San Francisco</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label class="form-label">Horizontal</label>
+                    <div class="field-checkbox">
+                        <div class="form-check mb-2">
+                            <div class="form-check form-check-inline me-3">
+                                <p-radioButton class="form-check-input" name="city" value="Chicago" [(ngModel)]="city"
+                                    inputId="city1"></p-radioButton>
+                                <label class="form-check-label ms-2" for="city1">Chicago</label>
+                            </div>
+                            <div class="form-check form-check-inline me-3">
+                                <p-radioButton class="form-check-input" name="city" value="Los Angeles"
+                                    [(ngModel)]="city" inputId="city2"></p-radioButton>
+                                <label class="form-check-label ms-2" for="city2">Los Angeles</label>
+                            </div>
+                            <div class="form-check form-check-inline me-3">
+                                <p-radioButton class="form-check-input" name="city" value="New York" [(ngModel)]="city"
+                                    inputId="city3"></p-radioButton>
+                                <label class="form-check-label ms-2" for="city3">New York</label>
+                            </div>
+                            <div class="form-check form-check-inline me-3">
+                                <p-radioButton class="form-check-input" name="city" value="San Francisco"
+                                    [(ngModel)]="city" inputId="city4"></p-radioButton>
+                                <label class="form-check-label ms-2" for="city4">San Francisco</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="d-flex align-items-center bg-light p-2 ps-3">
+            <h5 id="radio-dynamic">Dynamic Values</h5>
+            <div class="d-flex ms-auto">
+                <a href="https://www.primefaces.org/primeng/radiobutton" target="_blank" class="fs-5 px-2"
+                    pTooltip="Documentação" tooltipPosition="top">
+                    <i class="fa-light fa-clipboard"></i>
+                </a>
+                <a href="https://forum.primefaces.org/viewforum.php?f=35" target="_blank" class="fs-5 px-2"
+                    pTooltip="Fórum" tooltipPosition="top">
+                    <i class="fa-light fa-comments"></i>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row gx-3">
+                <div class="col-lg-6">
+                    <label class="form-label">Vertical</label>
+                    <div class="field-checkbox">
+                        <div class="form-check mb-2" *ngFor="let radioValue of radioValues">
+                            <p-radioButton class="form-check-input" name="radioValue" [inputId]="radioValue.key"
+                                [value]="radioValue" [(ngModel)]="selectedRadioValue"></p-radioButton>
+                            <label class="form-check-label ms-2 lh-110"
+                                [for]="radioValue.key">{{radioValue.name}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <label class="form-label">Horizontal</label>
+                    <div class="field-checkbox">
+                        <div class="form-check form-check-inline me-3" *ngFor="let radioValue of radioValues">
+                            <p-radioButton class="form-check-input" name="radioValue" [inputId]="radioValue.key"
+                                [value]="radioValue" [(ngModel)]="selectedRadioValue"></p-radioButton>
+                            <label class="form-check-label ms-2" [for]="radioValue.key">{{radioValue.name}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+<section id="main" class="container" role="main">
+
+    <h5>Scroll</h5>
+    <p-table id="table-responsive" class="table-scroll card bg-light" responsiveLayout="scroll" [value]="products">
+
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+                <th>Avaliação</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency:'BRL'}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.quantity}}</td>
+                <td><span [class]="'badge text-bg-' + product.tagType + ' bg-opacity-10 text-' + product.tagType + ' border border-' + product.tagType + ' border-opacity-25 '">{{product.inventoryStatus}}</span>
+                </td>
+                <td>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <h5>Stack</h5>
+    <p-table id="table-responsive" class="table-stack card bg-light" responsiveLayout="stack" [value]="products">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+                <th>Avaliação</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td><span class="p-column-title">Nome</span>{{product.name}}</td>
+                <td><span class="p-column-title">Preço</span>{{product.price | currency:'BRL'}}</td>
+                <td><span class="p-column-title">Categoria</span>{{product.category}}</td>
+                <td><span class="p-column-title">Quantidade</span>{{product.quantity}}</td>
+                <td><span class="p-column-title">Status</span>
+                    <span [class]="'badge text-bg-' + product.tagType + ' bg-opacity-10 text-' + product.tagType + ' border border-' + product.tagType + ' border-opacity-25 '">{{product.inventoryStatus}}</span>
+                </td>
+                <td><span class="p-column-title">Avaliação</span>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</section>

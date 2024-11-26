@@ -1,0 +1,486 @@
+<section id="main" class="container" role="main">
+    <div id="wizard-steps" class="card bg-white">
+        <div class="row g-3 my-5 py-2 justify-content-center">
+            <div class="col-lg-12">
+                <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="true"></p-steps>
+            </div>
+        </div>
+        <div *ngIf="activeIndex == 0">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 class="m-0 fs-light">Consultar declaração</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <p class="text-muted">Selecione o parcelamento desejado e a declaração de ITD</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-lg-6">
+                                    <label class="form-label">Tipo de parcelamento <span
+                                            class="text-muted">*</span></label>
+                                    <p-dropdown [options]="tiposParcelamento" [(ngModel)]="selectedtipoParcelamento"
+                                        placeholder="Selecione" optionLabel="tipo" [showClear]="true">
+                                    </p-dropdown>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="form-label">Número da declaração <span
+                                            class="text-muted">*</span></label>
+                                    <input type="text" class="form-control" name="declaracao" mask="0000-0-000000-0-00"
+                                        autocomplete="off" aria-describedby="aviso-cpf">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2"></div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 1">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 class="m-0 fs-light">Seleção de guias</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <p class="text-muted">Selecione a(s) guia(s) para parcelar</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Declaração</label>
+                                <p class="col">{{infoSelecaoGuias.numDeclaracao}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Natureza</label>
+                                <p class="col">{{infoSelecaoGuias.natureza}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Inventário</label>
+                                <p class="col">{{infoSelecaoGuias.dataInventario}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Situação</label>
+                                <p class="col">{{infoSelecaoGuias.situacao}}</p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Transmitente</label>
+                                <p class="col">{{infoSelecaoGuias.transmitente}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Nascimento</label>
+                                <p class="col">{{infoSelecaoGuias.dataNascimento}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Óbito</label>
+                                <p class="col">{{infoSelecaoGuias.dataObito}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Estado civil</label>
+                                <p class="col">{{infoSelecaoGuias.estadoCivil}}</p>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">Regime de bens</label>
+                                <p class="col">{{infoSelecaoGuias.regime}}</p>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 form-label text-muted">União</label>
+                                <p class="col">{{infoSelecaoGuias.dataUniao}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+            <p-card>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="card">
+                                <p-table id="table-responsive" class="table-scroll bg-light" #dt
+                                    [value]="guiasDeclaracao" [rows]="10" [paginator]="false"
+                                    [globalFilterFields]="['nGuia', 'valorPrincipal', 'valorPrincipal', 'multaFormal', 'total']"
+                                    [(selection)]="selectedGuias" [rowHover]="true" dataKey="id"
+                                    currentPageReportTemplate="{first} de {last}" [showCurrentPageReport]="true">
+                                    <ng-template pTemplate="caption">
+                                        <span class="p-input-icon-left w-100">
+                                            <i class="fa-light fa-magnifying-glass"></i>
+                                            <input class="form-control p-inputtext p-component" pInputText type="text"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Buscar" />
+                                        </span>
+                                    </ng-template>
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th style="width: 3rem">
+                                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                            </th>
+                                            <th pSortableColumn="nGuia">
+                                                Número guia
+                                                <p-sortIcon field="nGuia"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="valorPrincipal">
+                                                Valor principal*
+                                                <p-sortIcon field="valorPrincipal"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="multaFormal">
+                                                Multa formal**
+                                                <p-sortIcon field="multaFormal"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="acrescimosMoratorios">
+                                                Acréscimos moratórios***
+                                                <p-sortIcon field="acrescimosMoratorios"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="total">
+                                                Total
+                                                <p-sortIcon field="total"></p-sortIcon>
+                                            </th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-guiaDeclaracao>
+                                        <tr>
+                                            <td>
+                                                <p-tableCheckbox [value]="guiaDeclaracao"></p-tableCheckbox>
+                                            </td>
+                                            <td>{{ guiaDeclaracao.nGuia }}</td>
+                                            <td>{{ guiaDeclaracao.valorPrincipal.toLocaleString('pt-BR', { style:
+                                                'currency', currency: 'BRL' }) }}</td>
+                                            <td>{{ guiaDeclaracao.multaFormal.toLocaleString('pt-BR', { style:
+                                                'currency', currency: 'BRL' }) }}</td>
+                                            <td>{{ guiaDeclaracao.acrescimosMoratorios == 0 ? '' :
+                                                guiaDeclaracao.acrescimosMoratorios.toLocaleString('pt-BR', { style:
+                                                'currency', currency: 'BRL' })}}</td>
+                                            <td><span>{{ guiaDeclaracao.total.toLocaleString('pt-BR', { style:
+                                                    'currency',
+                                                    currency: 'BRL' }) }}</span></td>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="summary">
+                                        <div class="row">
+                                            <div class="col"></div>
+                                            <div class="col"></div>
+                                            <div class="col"></div>
+                                            <div class="col text-end">
+                                                <label class="text-muted">Valor mínimo parcelável</label>
+                                                <p>{{minimoParcelavel.toLocaleString('pt-BR', { style: 'currency',
+                                                    currency: 'BRL' })}}</p>
+                                            </div>
+                                            <div class="col text-end">
+                                                <label class="text-muted">Total a parcelar</label>
+                                                <p>{{totalDeclaracoes.toLocaleString('pt-BR', { style: 'currency',
+                                                    currency: 'BRL' })}}</p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto text-xxsm">
+                            <p class="col">* Principal: coluna com o valor do imposto (ou valor histórico).</p>
+                            <p class="col">** Multa Formal: coluna da multa formal (se houver, pois nem sempre ela
+                                existe).
+                            </p>
+                            <p class="col">*** Acréscimos Moratórios: soma de juros de mora e multa de mora (cobrados
+                                tanto sobre o Principal quanto sobre a Multa Formal).</p>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 2">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 class="m-0 fs-light">Responsável legal</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="alert fw-normal bg-warning bg-opacity-10 border border-warning border-opacity-10 mt-2"
+                                role="alert">
+                                <p class="m-2">Ao selecionar um responsável legal, o mesmo estará vinculado ao
+                                    parcelamento. As guias foram agrupadas de acordo com as pessoas vinculadas às
+                                    mesmas. Caso o grupo de guias selecionadas tenha um responsável legal diferente
+                                    das demais, será gerado outro parcelamento.<br> Caso todos os grupos de guias tenham
+                                    um mesmo responsável legal, o valor total parcelado, será a soma de todas as guias.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content" *ngFor="let infoParcelamento of infosParcelamento">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="row">
+                                <div class="col-lg-8">
+
+                                    <label class="form-label text-muted">Responsável legal pelo pagamento</label>
+                                    <p-dropdown [options]="responsavelParcelamento" [(ngModel)]="selectedResponsavel"
+                                        placeholder="Selecione" optionLabel="nome" [showClear]="true">
+                                    </p-dropdown>
+
+                                    <div class="row mt-3">
+                                        <div class="col-lg-9">
+                                            <label class="form-label text-muted">Guias parceladas</label>
+                                            <span class="p-1 border text-nowrap d-inline me-1 mb-1 text-xxsm bg-light"
+                                                *ngFor="let guia of infoParcelamento.guias">
+                                                {{guia}}
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-3 text-end">
+                                            <label class="form-label text-muted">Soma das guias</label>
+                                            <div class="mt-n1">{{infoParcelamento.totalGuias.toLocaleString('pt-BR', {
+                                                style: 'currency', currency: 'BRL' })}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <h6>Total a parcelar</h6>
+                                    <div class="card">
+                                        <div class="card-body text-center text-xsm">
+                                            Parcelamento em nome de
+                                            <div class="fw-bold mt-n1 pb-2 text-sm">{{infoParcelamento.responsavel}}
+                                            </div>
+
+                                            <div class="border-top pt-2">
+                                                Total de
+                                                <div class="fw-bold mt-n1 text-lg">
+                                                    {{infoParcelamento.totalGuias.toLocaleString('pt-BR', { style:
+                                                    'currency', currency: 'BRL' })}}</div>
+                                                <div class="text-muted text-xsm">Valor mínimo parcelável de
+                                                    {{infoParcelamento.minimo.toLocaleString('pt-BR', { style:
+                                                    'currency', currency: 'BRL' })}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mt-3">
+                                        <div class="card-body text-center text-xsm">
+                                            Parcelamento em nome de
+                                            <div class="fw-bold mt-n1 pb-2 text-sm">{{infoParcelamento.responsavel}}
+                                            </div>
+                                            <div class="border-top pt-2">
+                                                Total de
+                                                <div class="fw-bold mt-n1 text-lg">
+                                                    {{infoParcelamento.totalGuias.toLocaleString('pt-BR', { style:
+                                                    'currency', currency: 'BRL' })}}</div>
+                                                <div class="text-muted text-xsm">Valor mínimo parcelável de
+                                                    {{infoParcelamento.minimo.toLocaleString('pt-BR', { style:
+                                                    'currency', currency: 'BRL' })}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 3">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 class="m-0 fs-light">Parcelamento</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="alert fw-normal bg-warning bg-opacity-10 border border-warning border-opacity-10"
+                                role="alert">
+                                <p class="m-2">Selecione o número de parcelas para pagamento de seu débito de ITD,
+                                    verifique o valor da parcela* antes de prosseguir.<br> As opções de parcelamento
+                                    listadas abaixo levam em conta o valor mínimo da parcela de R$ 265,95..</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template class="row" pTemplate="content" *ngFor="let infoParcelamento of infosParcelamento">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="row">
+                            <div class="col-md-4 control-group form-group">
+                                <label class="form-label text-muted">Responsável legal pelo pagamento</label>
+                                <span class="d-block">{{ infoParcelamento.responsavel }}</span>
+                            </div>
+                            <div class="col-md-4 control-group form-group">
+                                <label class="form-label text-muted">Tipo parcelamento</label>
+                                <span class="d-block">{{ infoParcelamento.tipoParcelamento }}</span>
+                            </div>
+                            <div class="col-md-2 control-group form-group">
+                                <label class="form-label text-muted">Número de parcelas</label>
+                                <p-dropdown [options]="numParcelas" [(ngModel)]="selectedNumParcelas" optionLabel="num"
+                                    placeholder="Selecione"></p-dropdown>
+                            </div>
+                            <div class="col-md-2 control-group form-group text-end">
+                                <label class="form-label text-muted">Valor da parcela*</label>
+                                <div class="fw-bold text-lg">{{ infoParcelamento.valorParcela.toLocaleString('pt-BR', {
+                                    style: 'currency', currency: 'BRL' }) }}</div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-9 control-group form-group">
+                                <label class="form-label text-muted">Guias parceladas</label>
+                                <div class="mt-n1">
+                                    <span class="p-1 border text-nowrap d-inline-block me-1 mb-1 text-xxsm bg-light"
+                                        *ngFor="let guia of infoParcelamento.guias">{{guia}}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 control-group form-group text-end">
+                                <label class="form-label text-muted">Total a parcelar</label>
+                                <div class="fw-bold mt-n1 text-lg">{{
+                                    infoParcelamento.totalGuias.toLocaleString('pt-BR', { style: 'currency', currency:
+                                    'BRL' }) }}</div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xxsm">*Valor da parcela: sobre o valor da parcela haverá incidência de juros
+                            de mora equivalentes à taxa SELIC, calculados conforme estabelecido no artigo 33 da
+                            Resolução nº 680 de 2013.
+                        </p>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Continuar" (onClick)="nextPage()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+        <div *ngIf="activeIndex == 4">
+            <p-card>
+                <ng-template pTemplate="title">
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-lg-10">
+                            <h4 class="m-0 fs-light">Termo de aceite</h4>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <label>Requerente</label>
+                            <h6>035.689.987-99 Fulano da Silva Oliveira</h6>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">                            
+                            <div class="field-checkbox">
+                                <div class="form-check form-check-inline me-3">
+                                    <p-checkbox class="form-check-input" name="groupname" value="val1"
+                                        [(ngModel)]="selectedValues" inputId="waw">
+                                    </p-checkbox>
+                                    <label class="form-check-label ms-2 lh-110" for="waw">Declaro que li e aceito os
+                                        Termos de aceite acima</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="d-flex justify-content-between border-top mt-5 mb-3 py-5">
+                                <div class="me-2">
+                                    <p-button styleClass="btn btn-outline-primary me-2" label="Voltar"
+                                        (onClick)="prevPage()" icon="fa-light fa-angle-left"></p-button>
+                                </div>
+                                <div>
+                                    <p-button styleClass="btn btn-primary" label="Confirmar" (onClick)="complete()"
+                                        icon="fa-light fa-angle-right" iconPos="right">
+                                    </p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</section>

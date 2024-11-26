@@ -1,0 +1,46 @@
+<section id="main" class="container" role="main">
+    <div class="card card-body">
+        <div class="row">
+            <div class="col-12" *ngIf="product?.length > 0; else notFound">
+                <h3>Produto detalhado</h3>
+                <img [src]="'assets/showcase/images/demo/product/' + product[0].image" [alt]="product[0].image" class="product-image" *ngIf="product[0].image">
+                <div class="field">
+                    <h4>Name</h4>
+                    <p>{{ product[0]?.name }}</p>
+                </div>
+                <div class="field">
+                    <h4>Description</h4>
+                    <p>{{ product[0]?.description }}</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis eligendi debitis aliquid assumenda corporis dolor id vero corrupti reprehenderit iusto amet unde nesciunt sint nihil, suscipit nobis incidunt obcaecati odio.
+                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ullam tempore autem, aliquid aut quo expedita. Facere, quisquam maxime necessitatibus aut vel quod illum, delectus neque, ab ipsum veritatis eligendi?</p>
+                </div>
+                <div class="field">
+                    <h4>Inventory Status</h4>
+                    <p>{{ product[0]?.inventoryStatus }}</p>
+                </div>
+
+                <div class="field">
+                    <h4>Category</h4>
+                    <p>{{ product[0]?.category }}</p>
+                </div>
+
+                <div class="field">
+                    <h4>Price</h4>
+                    <p>${{ product[0]?.price.toFixed(2) }}</p>
+                </div>
+                <div class="field">
+                    <h4>Quantity</h4>
+                    <p>{{ product[0]?.quantity }}</p>
+                </div>
+                <div class="field" *ngIf="basicData">
+                    <h4>History Price</h4>
+                    <!-- <p-chart type="bar" [data]="basicData" [options]="basicOptions">
+                            </p-chart> -->
+                    <p-chart type="line" [data]="basicData" [options]="basicOptions" style="width: 300px"></p-chart>
+                </div>
+            </div>
+            <ng-template #notFound>Este produto não existe</ng-template>
+        </div>
+    </div>
+</section>

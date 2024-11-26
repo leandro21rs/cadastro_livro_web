@@ -1,0 +1,101 @@
+<section id="main" class="container" role="main">
+    <p-table id="table-expanded" class="table-scroll card bg-white pb-3 bg-light pt-1" [value]="products" dataKey="name" responsiveLayout="scroll">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem"></th>
+                <th pSortableColumn="name">Nome
+                    <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th>Imagem</th>
+                <th pSortableColumn="price">Preço
+                    <p-sortIcon field="price"></p-sortIcon>
+                </th>
+                <th pSortableColumn="category">Categoria
+                    <p-sortIcon field="category"></p-sortIcon>
+                </th>
+                <th pSortableColumn="rating">Avaliação
+                    <p-sortIcon field="rating"></p-sortIcon>
+                </th>
+                <th pSortableColumn="inventoryStatus">Status
+                    <p-sortIcon field="inventoryStatus">
+                    </p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-expanded="expanded">
+            <tr>
+                <td>
+                    <button type="button" pButton [pRowToggler]="product" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'fa-light fa-chevron-up' : 'fa-light fa-chevron-down'"></button>
+                </td>
+                <td>{{product.name}}</td>
+                <td><img class="rounded border" [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" height="50px" width="auto" /></td>
+                <td>{{product.price | currency:'BRL'}}</td>
+                <td>{{product.category}}</td>
+                <td>
+                    <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false">
+                    </p-rating>
+                </td>
+                <td><span [class]="'badge text-bg-' + product.tagType + ' bg-opacity-10 text-' + product.tagType + ' border border-' + product.tagType + ' border-opacity-25 '">{{product.inventoryStatus}}</span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-product>
+            <tr>
+                <td colspan="7">
+                    <div class="p-3">
+                        <p-table [value]="product.orders" dataKey="id">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="id">Código
+                                        <p-sortIcon field="price"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="customer">Cliente
+                                        <p-sortIcon field="customer"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="date">Data
+                                        <p-sortIcon field="date"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="amount">Valor
+                                        <p-sortIcon field="amount"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="status">Status
+                                        <p-sortIcon field="status"></p-sortIcon>
+                                    </th>
+                                    <th style="width: 4rem"></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-order>
+                                <tr>
+                                    <td>{{order.id}}</td>
+                                    <td>{{order.customer}}</td>
+                                    <td>{{order.id}}</td>
+                                    <td>{{order.amount | currency:'BRL'}}</td>
+                                    <td>
+                                        <span [ngClass]="[
+                                            order.status === 'CANCELLED' ? 'badge badge-danger text-bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25' : '' ||
+                                            order.status === 'PENDING' ? 'badge badge-warning text-bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25' : '' ||
+                                            order.status === 'DELIVERED' ? 'badge badge-success text-bg-success bg-opacity-10 text-success border border-success border-opacity-25' : '' ||
+                                            order.status === 'RETURNED' ? 'badge badge-primary text-bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25' : ''
+                                        ]">
+                                            {{order.status}}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button pButton icon="fa-light fa-magnifying-glass" class="btn btn-outline-secondary"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="6">Ainda não há pedidos para este produto.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</section>

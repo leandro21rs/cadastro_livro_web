@@ -1,0 +1,66 @@
+<app-header (showMenu)="onShowMenu($event)" [systemName]="systemName"></app-header>
+
+<main role="main">
+    <ngx-spinner bdColor="rgba(255,255,255,0.9)" size="medium" type="ball-clip-rotate-multiple" [fullScreen]="true"
+        color="#000000">
+        <p>Carregando...</p>
+    </ngx-spinner>
+
+    <div class="py-3 py-lg-5">
+        <router-outlet></router-outlet>
+    </div>
+
+    <p-sidebar [(visible)]="display" [baseZIndex]="1000" styleClass="menu-sidebar">
+        <div class="menu-user d-flex flex-stack">
+            <ng-container *ngIf="isLoggedIn">
+                <div class="user-loggedin d-flex">
+                    <div class="avatar rounded-circle text-center">
+                        <span class="position-relative h6 text-uppercase fw-bold">
+                            {{ username.charAt(0) }}
+                        </span>
+                    </div>
+                    <span class="name text-capitalize ps-2">
+                        {{ nome.toLowerCase() }}
+                    </span>
+                </div>
+                <span class="d-flex align-items-center">
+                    <a class="btn btn-outline-primary btn-xsm" href="">Mudar perfil</a>
+                </span>
+            </ng-container>
+            <ng-container *ngIf="!isLoggedIn">
+                <a class="user-loggedout d-flex align-items-center cursor-pointer" (click)="login()">
+                    <div class="avatar d-table-cell align-middle">
+                        <i class="align-middle fa-solid fa-circle-user"></i>
+                    </div>
+                    <div class="d-table-cell align-middle ps-2">
+                        <p class="d-block text-primary m-0 p-0">Conta</p>
+                    </div>
+                </a>
+            </ng-container>
+        </div>
+        <div class="menu-search px-3 py-3 border-top border-opacity-10 position-sticky">
+            <p-autoComplete #autocomplete inputStyleClass="w-100" styleClass="w-100 btn-auto" [(ngModel)]="selectedMenuItem"
+                [group]="true" [suggestions]="filteredGroups" (completeMethod)="filterGroupedMenu($event)" field="label"
+                [dropdown]="false" (onSelect)="goToPage()" placeholder="Buscar" (keydown.enter)="autocomplete.hide()">
+                <ng-template let-group pTemplate="group">
+                    <div class="flex align-items-center">
+                        <span>{{group.label}}</span>
+                    </div>
+                </ng-template>
+            </p-autoComplete>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <p-slideMenu [model]="items" [viewportHeight]="windowHeight" [menuWidth]="272" class="slideMenu"
+                [style]="{'width':'100%', 'border': 'none'}" backLabel="" [effectDuration]="400" (onHide)="!display">
+            </p-slideMenu>
+        </div>
+        <div *ngIf="!isLoggedIn">
+            <p-menu [model]="items" [style]="{'width':'100%', 'border': 'none'}" backLabel="" class="menuAberto"
+                (onHide)="!display"></p-menu>
+        </div>
+
+    </p-sidebar>
+
+</main>
+
+<app-footer></app-footer>
